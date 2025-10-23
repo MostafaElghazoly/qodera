@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'common/constants/app_theme.dart';
@@ -13,7 +14,7 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     Orientation orientation = MediaQuery.of(context).orientation;
@@ -27,6 +28,9 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
           navigatorKey: navigatorKey,
           debugShowCheckedModeBanner: false,
           theme: buildAppTheme(context),
+          localizationsDelegates: context.localizationDelegates,
+          supportedLocales: context.supportedLocales,
+          locale: context.locale,
           home: SplashScreen(),
           onGenerateRoute: router.generateRoute,
         );

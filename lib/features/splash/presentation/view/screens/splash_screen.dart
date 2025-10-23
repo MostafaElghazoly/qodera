@@ -12,7 +12,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    Navigation().navigateAndRemoveUntil(routeName: AppRoutes.homeScreen);
+    Future.delayed(Duration(seconds: 2), () => Navigation().navigateAndRemoveUntil(routeName: AppRoutes.homeScreen));
     super.initState();
   }
 

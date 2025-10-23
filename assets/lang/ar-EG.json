@@ -1,0 +1,7 @@
+{
+  "fieldRequired": "الحقل مطلوب",
+  "enterValidEmail": "أدخل بريد إلكتروني صالح",
+  "enterValidName": "أدخل اسمًا صحيحًا",
+  "passwordShort": "كلمة المرور يجب أن تكون أكثر من 8 أحرف",
+  "passwordNotMatch": "كلمتا المرور غير متطابقتين"
+}

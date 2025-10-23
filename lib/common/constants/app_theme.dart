@@ -8,7 +8,7 @@ import 'app_colors.dart';
 ThemeData buildAppTheme(context) {
   return ThemeData(
     useMaterial3: false,
-    fontFamily: "Lexend",
+    fontFamily: "Cairo",
     scaffoldBackgroundColor: AppColors.white,
     appBarTheme: AppBarTheme(
       backgroundColor: AppColors.white,

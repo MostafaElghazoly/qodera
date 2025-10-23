@@ -1,0 +1,7 @@
+{
+  "fieldRequired":"Field required",
+  "enterValidEmail":"Enter valid email",
+  "enterValidName":"Enter valid name",
+  "passwordShort":"Password must be more than 8 letters",
+  "passwordNotMatch":"Passwords are not matched"
+}
