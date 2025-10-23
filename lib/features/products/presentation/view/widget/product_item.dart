@@ -3,8 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qodera_task/common/constants/app_colors.dart';
 import 'package:qodera_task/common/constants/text_themes.dart';
 
+import '../../../data/models/product_model.dart';
+
 class ProductItem extends StatelessWidget {
-  const ProductItem({super.key});
+  final ProductModel model;
+  const ProductItem({super.key, required this.model});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +25,7 @@ class ProductItem extends StatelessWidget {
             width: 60.sp,
             child: ClipRRect(
               borderRadius: BorderRadius.all(Radius.circular(8.sp)),
-              child: Image.network("https://thumbs.dreamstime.com/b/set-care-beauty-products-skin-29817248.jpg",fit: BoxFit.fill,),
+              child: Image.network(model.images?[0] ?? "", fit: BoxFit.fill),
             ),
           ),
           SizedBox(width: 16.sp),
@@ -30,8 +33,22 @@ class ProductItem extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("جزمة كالفن كلاين جينز", style: TextThemes.style16700),
-                Text("1000", style: TextThemes.style16700),
+                Text(model.title ?? "", style: TextThemes.style16700),
+                Text(
+                  model.description ?? "",
+                  style: TextThemes.style12500,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                Wrap(
+                  spacing: 8.sp,
+                  runSpacing: 8.sp,
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  children: [
+                    Text(model.price.toString(), style: TextThemes.style16700),
+                    Text(model.getPriceBeforeDiscount(), style: TextThemes.style14700.copyWith(color: AppColors.grey,decoration: TextDecoration.lineThrough)),
+                  ],
+                ),
               ],
             ),
           ),

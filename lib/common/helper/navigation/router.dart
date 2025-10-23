@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:qodera_task/common/helper/navigation/routes.dart';
-import '../../../features/home/presentation/view/screens/home_screen.dart';
+import '../../../home_screen.dart';
 import '../../../features/splash/presentation/view/screens/splash_screen.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
