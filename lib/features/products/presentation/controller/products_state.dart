@@ -1,25 +1,36 @@
 import 'package:equatable/equatable.dart';
 import '../../data/models/product_model.dart';
+import '../../../categories/data/models/category_model.dart';
 
 abstract class ProductsState extends Equatable {
+  final CategoryModel? selectedCategory;
+
+  const ProductsState({this.selectedCategory});
+
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [selectedCategory ?? ''];
 }
 
-class ProductsInitial extends ProductsState {}
+class ProductsInitial extends ProductsState {
+  const ProductsInitial({super.selectedCategory});
+}
 
-class ProductsLoading extends ProductsState {}
+class ProductsLoading extends ProductsState {
+  const ProductsLoading({super.selectedCategory});
+}
 
 class ProductsLoaded extends ProductsState {
   final List<ProductModel> products;
-  ProductsLoaded(this.products);
+  const ProductsLoaded({required this.products, super.selectedCategory});
+
   @override
-  List<Object?> get props => [products];
+  List<Object?> get props => [products, selectedCategory ?? ''];
 }
 
 class ProductsError extends ProductsState {
   final String message;
-  ProductsError(this.message);
+  const ProductsError(this.message, {super.selectedCategory});
+
   @override
-  List<Object?> get props => [message];
+  List<Object?> get props => [message, selectedCategory ?? ''];
 }

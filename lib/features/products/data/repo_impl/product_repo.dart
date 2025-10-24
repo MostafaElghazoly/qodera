@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:qodera_task/features/products/data/repo_impl/products_service.dart';
 import '../models/product_response.dart';
+import 'products_service.dart';
 
 class ProductRepo {
   late final ProductsService _service;
@@ -10,7 +10,15 @@ class ProductRepo {
     _service = ProductsService(dio);
   }
 
-  Future<ProductsResponse> getProducts() async {
-    return await _service.getProducts();
+  Future<ProductsResponse> getProducts({String? categorySlug, String? searchText}) async {
+    String endpoint = "/products";
+
+    if (searchText != null && searchText.isNotEmpty) {
+      endpoint = "/products/search";
+    } else if (categorySlug != null && categorySlug.isNotEmpty) {
+      endpoint = "/products/category/$categorySlug";
+    }
+
+    return await _service.getProducts(endpoint, searchText);
   }
 }

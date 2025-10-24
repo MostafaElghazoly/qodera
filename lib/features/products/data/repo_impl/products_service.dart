@@ -8,6 +8,6 @@ part 'products_service.g.dart';
 abstract class ProductsService {
   factory ProductsService(Dio dio, {String baseUrl}) = _ProductsService;
 
-  @GET("/products")
-  Future<ProductsResponse> getProducts();
+  @GET("{endpoint}")
+  Future<ProductsResponse> getProducts(@Path("endpoint") String endpoint, @Query("q") String? searchText);
 }

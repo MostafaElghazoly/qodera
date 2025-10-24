@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'products_service.dart';
+part of 'categories_service.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,12 @@ part of 'products_service.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element
 
-class _ProductsService implements ProductsService {
-  _ProductsService(this._dio, {this.baseUrl, this.errorLogger}) {
+class _CategoriesService implements CategoriesService {
+  _CategoriesService(
+    this._dio, {
+    this.baseUrl,
+    this.errorLogger,
+  }) {
     baseUrl ??= 'https://dummyjson.com';
   }
 
@@ -20,21 +24,33 @@ class _ProductsService implements ProductsService {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<ProductsResponse> getProducts(String endpoint, String? searchText) async {
+  Future<List<CategoryModel>> getCategories() async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'q': searchText};
-    queryParameters.removeWhere((k, v) => v == null);
+    final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<ProductsResponse>(
-      Options(method: 'GET', headers: _headers, extra: _extra)
-          .compose(_dio.options, endpoint, queryParameters: queryParameters, data: _data)
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
-    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late ProductsResponse _value;
+    final _options = _setStreamType<List<CategoryModel>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/products/categories',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<List<dynamic>>(_options);
+    late List<CategoryModel> _value;
     try {
-      _value = ProductsResponse.fromJson(_result.data!);
+      _value = _result.data!
+          .map((dynamic i) => CategoryModel.fromJson(i as Map<String, dynamic>))
+          .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -44,7 +60,8 @@ class _ProductsService implements ProductsService {
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
-        !(requestOptions.responseType == ResponseType.bytes || requestOptions.responseType == ResponseType.stream)) {
+        !(requestOptions.responseType == ResponseType.bytes ||
+            requestOptions.responseType == ResponseType.stream)) {
       if (T == String) {
         requestOptions.responseType = ResponseType.plain;
       } else {
@@ -54,7 +71,10 @@ class _ProductsService implements ProductsService {
     return requestOptions;
   }
 
-  String _combineBaseUrls(String dioBaseUrl, String? baseUrl) {
+  String _combineBaseUrls(
+    String dioBaseUrl,
+    String? baseUrl,
+  ) {
     if (baseUrl == null || baseUrl.trim().isEmpty) {
       return dioBaseUrl;
     }
