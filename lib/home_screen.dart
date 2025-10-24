@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qodera_task/common/widgets/my_text_field.dart';
+import 'package:qodera_task/features/products/presentation/view/widget/banners_section.dart';
 import 'package:qodera_task/features/products/presentation/view/widget/products_section.dart';
 import 'features/products/presentation/controller/products_bloc.dart';
 import 'features/products/presentation/controller/products_event.dart';
@@ -63,6 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     titlePadding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 8.h),
                   ),
                 ),
+                BannersSection(),
                 SliverAppBar(
                   pinned: true,
                   flexibleSpace: FlexibleSpaceBar(
