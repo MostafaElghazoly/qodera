@@ -8,7 +8,4 @@ part of 'product_response.dart';
 
 ProductsResponse _$ProductsResponseFromJson(Map<String, dynamic> json) => ProductsResponse(
   products: (json['products'] as List<dynamic>).map((e) => ProductModel.fromJson(e as Map<String, dynamic>)).toList(),
-  total: (json['total'] as num).toInt(),
-  skip: (json['skip'] as num).toInt(),
-  limit: (json['limit'] as num).toInt(),
 );
